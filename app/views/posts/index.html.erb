@@ -1,0 +1,10 @@
+<h1>Список объявлений</h1>
+
+<% @post.each do |post|%>
+    <%= post.author%> <br/>
+    <%= post.title%> <br/>
+    <%= post.post%> <br/>
+
+    <%= post.created_at%> <br/>
+    <hr>
+<%end%>
