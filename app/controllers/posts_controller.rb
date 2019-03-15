@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    
+    before_action :authenticate_user!
                             
     def index
         @post = Post.all
@@ -15,7 +15,7 @@ class PostsController < ApplicationController
     def create
         @post = Post.new(post_params)
         if @post.save
-            flash[:success] = 'Объявление добавлено!'
+            flash[:notice] = 'Объявление добавлено!'
             redirect_to @post
         else
             render action: 'new'

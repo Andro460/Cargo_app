@@ -1,36 +1,40 @@
-<h2>Создать новое объявление</h2>
 
-<%= form_for :post, url: '/posts' do |f| %>
-    <% if @post %>
+<div class="container">
+   
+   <h2>Создать новое объявление</h2>
+
+   <%= form_for :post, url: '/posts' do |f| %>
+      <% if @post %>
+         <p>
+            <ul>
+               <% @post.errors.full_messages.each do |msg| %>
+                  <li> <%= msg %> </li>
+               <%end%>
+            </ul>
+         </p>
+      <%end%>
+
+      <p>  
+         <%= f.label :Автор %><br/> 
+         <%= f.text_field :author, placeholder: 'Ваше имя' %>
+      </p>  
+
+      <p>   
+         <%= f.label :Заголовок %><br/> 
+         <%= f.text_area :title %>
+      </p>    
+         
       <p>
-         <ul>
-            <% @post.errors.full_messages.each do |msg| %>
-               <li> <%= msg %> </li>
-            <%end%>
-         </ul>
+         <%= f.label :Ваше_Объявление  %><br/> 
+         <%= f.text_area :post, placeholder: 'Введите объявление' %>
       </p>
-   <%end%>
 
-    <p>  
-       <%= f.label :Автор %><br/> 
-       <%= f.text_field :author, placeholder: 'Ваше имя' %>
-    </p>  
-
-    <p>   
-       <%= f.label :Заголовок %><br/> 
-       <%= f.text_area :title %>
-    </p>    
-       
-    <p>
-       <%= f.label :Ваше_Объявление  %><br/> 
-       <%= f.text_area :post, placeholder: 'Введите объявление' %>
-    </p>
-
-    <p>
-       <%= f.label :Запретить_комментарии %><br/> 
-       <%= f.check_box :comments_permit %>
-    </p>    
+      <p>
+         <%= f.label :Запретить_комментарии %><br/> 
+         <%= f.check_box :comments_permit %>
+      </p>    
+         
+         <%= f.submit 'Отправить'  %>
       
-       <%= f.submit 'Отправить'  %>
-    
-<% end %>
+ <% end %>
+</div>
