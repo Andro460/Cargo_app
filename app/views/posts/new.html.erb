@@ -14,14 +14,11 @@
          </p>
       <%end%>
 
-      <p>  
-         <%= f.label :Автор %><br/> 
-         <%= f.text_field :author, placeholder: 'Ваше имя' %>
-      </p>  
+ 
 
       <p>   
          <%= f.label :Заголовок %><br/> 
-         <%= f.text_area :title %>
+         <%= f.text_field :title, placeholder: 'Заголовок' %>
       </p>    
          
       <p>
@@ -34,7 +31,7 @@
          <%= f.check_box :comments_permit %>
       </p>    
          
-         <%= f.submit 'Отправить'  %>
+        <%= f.submit 'Отправить', class:"btn btn-secondary"   %> 
       
  <% end %>
 </div>
