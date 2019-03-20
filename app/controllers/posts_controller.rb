@@ -1,6 +1,15 @@
 class PostsController < ApplicationController
     before_action :authenticate_user!, :only => [:new]
-                            
+    load_and_authorize_resource
+    
+    def my_posts
+        if user_signed_in?
+            @post = Post.where  author: current_user.username
+        else
+            redirect_to action: :index
+        end
+    end 
+    
     def index
         @post = Post.order('created_at DESC')
     end 
@@ -13,8 +22,9 @@ class PostsController < ApplicationController
     end
     
     def create
-        @post = Post.new(post_params)
-        @post.author = current_user.username
+       @user=current_user
+        @post = @user.posts.build(post_params)
+        @post.author = @user.username
         if @post.save
             flash[:notice] = 'Объявление добавлено!'
             redirect_to @post
@@ -28,13 +38,19 @@ class PostsController < ApplicationController
     end
 
     def update
-        
+       @post = Post.find(params[:id]) 
+
+       if @post.update(post_params)
+        redirect_to @post
+       else
+        render action: 'edit'
+       end 
     end  
     
     def destroy
         @post = Post.find(params[:id])
         @post.destroy
-        redirect_to action: :index
+        redirect_to request.referer.present? ? request.referer : default_path
     end
     
     

@@ -4,8 +4,11 @@ devise_for :users
 root to: 'posts#index'
 
 get 'about' => 'home#about'
+get 'my_posts' => 'posts#my_posts'
 
-resources :posts
+resources :posts do
+  resources :comments, only: [:create, :destroy]
+end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

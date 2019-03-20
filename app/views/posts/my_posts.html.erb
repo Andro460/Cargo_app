@@ -1,0 +1,13 @@
+<h2>Мои посты</h2>
+
+<% @post.each do |post|%>
+    <%= post.author%> <br/>
+    <%= post.title%><br/>
+    <%= post.post%><br/>
+
+    <%= link_to 'Show post', post_path(post)%> &nbsp;
+    <%= link_to 'Edit post', edit_post_path(post)%> &nbsp;
+    <%= link_to 'Delete post', post_path(post), method: :delete, data: { confirm: 'Are you sure?'} %> 
+
+    <hr>
+<%end%>

@@ -3,3 +3,46 @@
 <%= @post.author%> <br/>
 <%= @post.title%> <br/>
 <%= @post.post%> <br/>
+<br/>
+
+<%= link_to "Back", request.referer.present? ? request.referer : default_path %> &nbsp;
+
+<% if can? :update, @post %>
+    <%= link_to 'Edit post', edit_post_path(@post)%> &nbsp;
+<%end%>
+
+<% if @post.comments_permit == true%>
+    <p>Комментарии отключены</p>
+<%else%>    
+
+<h2>Add comment </h2>
+            
+        <%= form_for([@post, @post.comments.build]) do |f| %>
+
+        <p>
+        <%= f.label :comment %><br/> 
+        <%= f.text_area :content %>
+        </p>
+    
+    <% if user_signed_in? %>
+        <%= f.submit 'Create Comment!' %><br/>
+    <% else %>
+        <%= link_to 'Войдите чтобы комментировать', new_user_session_path  %>    
+    <%end%>
+  <%end%>  
+<%end%>
+<br/>
+
+
+<p>
+    <% @post.comments.reverse_order.each do |com|%>
+        <i><%= com.author%> said:</i><br/>
+        <%= com.content%><br/>
+    
+    <% if can? :destroy, com %>
+        <%= link_to 'Delete Comment', post_comment_path(@post, com), method: :delete, data: { confirm: 'Are you sure?'} %> 
+    <%end%>    
+        <hr>
+    <%end%>
+</p>
+
