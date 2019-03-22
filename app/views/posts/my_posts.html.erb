@@ -4,7 +4,14 @@
     <%= post.author%> <br/>
     <%= post.title%><br/>
     <%= post.post%><br/>
-
+<br/>
+    <p class = 'btn btn-primary btn-sm'>     
+        like <%=post.get_upvotes.size%>&nbsp;
+    </p>  &nbsp;
+    <p class = 'btn btn-secondary btn-sm'> 
+        dislike <%=post.get_downvotes.size%>
+    </p>
+<br/>
     <%= link_to 'Show post', post_path(post)%> &nbsp;
     <%= link_to 'Edit post', edit_post_path(post)%> &nbsp;
     <%= link_to 'Delete post', post_path(post), method: :delete, data: { confirm: 'Are you sure?'} %> 

@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
     before_action :authenticate_user!, :only => [:new]
     load_and_authorize_resource
-    
+    respond_to :js, :json, :html
+
     def my_posts
         if user_signed_in?
             @post = Post.where  author: current_user.username
@@ -31,7 +32,7 @@ class PostsController < ApplicationController
         else
             render action: 'new'
         end
-    end 
+    end  
 
     def edit 
         @post = Post.find(params[:id])
@@ -53,7 +54,21 @@ class PostsController < ApplicationController
         redirect_to request.referer.present? ? request.referer : default_path
     end
     
-    
+    def upvote
+        @post = Post.find(params[:id])
+        @post.upvote_from current_user    
+        redirect_to @post
+       
+    end
+
+    def downvote
+        @post = Post.find(params[:id])
+        @post.downvote_from current_user
+        redirect_to @post
+    end
+
+
+
     private
     def post_params
         params.require(:post).permit(:author, :title, :post, :comments_permit)

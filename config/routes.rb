@@ -8,6 +8,10 @@ get 'my_posts' => 'posts#my_posts'
 
 resources :posts do
   resources :comments, only: [:create, :destroy]
+  member do
+    put "like" => "posts#upvote"
+    put "dislike" => "posts#downvote"
+  end
 end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

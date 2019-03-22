@@ -11,6 +11,9 @@ class Ability
            can :read, :all
            can :create, :all
            
+          can :upvote, Post
+          can :downvote, Post
+
           can :update, Post do |post|
             post.user == user
           end

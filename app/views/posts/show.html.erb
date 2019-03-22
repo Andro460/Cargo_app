@@ -4,7 +4,24 @@
 <%= @post.title%> <br/>
 <%= @post.post%> <br/>
 <br/>
-
+<% if user_signed_in?%>
+    <%=link_to like_post_path(@post), method: :put, class: 'btn btn-primary btn-sm' do %>
+            <span class="glyphicon glyphicon-chevron-up"></span>
+            Like <%=@post.get_upvotes.size%></td>
+        <% end %> &nbsp;
+        <%=link_to dislike_post_path(@post), method: :put, class: 'btn btn-secondary btn-sm' do %>
+            <span class="glyphicon glyphicon-chevron-down"></span>
+            Dislike <%=@post.get_downvotes.size%></td>
+        <%end%><br/>
+<%else%>
+     <p class = 'btn btn-primary btn-sm' style="pointer-events: none;" type="button" disabled>     
+          Like <%=@post.get_upvotes.size%>&nbsp;
+        </p>  &nbsp;
+        <p class = 'btn btn-secondary btn-sm' style="pointer-events: none;" type="button" disabled> 
+          Dislike <%=@post.get_downvotes.size%>
+        </p><br/>
+<%end%>
+<br/>
 <%= link_to "Back", request.referer.present? ? request.referer : default_path %> &nbsp;
 
 <% if can? :update, @post %>
@@ -15,7 +32,7 @@
     <p>Комментарии отключены</p>
 <%else%>    
 
-<h2>Add comment </h2>
+<h2>Add comment </h2> 
             
         <%= form_for([@post, @post.comments.build]) do |f| %>
 
