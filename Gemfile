@@ -42,7 +42,7 @@ group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3', '~> 1.3.13'
+  #gem 'sqlite3', '~> 1.3.13'
 end
 
 group :test do
@@ -60,3 +60,8 @@ gem 'devise'
 
 gem 'cancancan', '~> 2.0'
 gem 'acts_as_votable', '~> 0.12.0'
+
+group :production do
+  gem 'pg', '0.18.1'
+  gem 'rails_12factor'
+end
