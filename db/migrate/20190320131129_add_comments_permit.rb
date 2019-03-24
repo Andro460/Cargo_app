@@ -1,10 +1,11 @@
 class AddCommentsPermit < ActiveRecord::Migration[5.2]
   
     def change
-      remove_column :posts, :comments_permit, :boolean, default: true
+      change_column_default :posts, :comments_permit, from: true, to: false
       remove_column :posts, :comment_permit, :boolean, default: false
       
-      add_column :posts, :comments_permit, :boolean, default: false  
+     
     end
   
 end
+ 
