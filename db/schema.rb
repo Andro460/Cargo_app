@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2019_03_22_075149) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.boolean "comments_permit", default: false
+    t.boolean "comment_permit", default: false
     t.integer "cached_votes_total", default: 0
     t.integer "cached_votes_score", default: 0
     t.integer "cached_votes_up", default: 0
