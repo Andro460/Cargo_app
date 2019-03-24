@@ -51,7 +51,7 @@ class PostsController < ApplicationController
     def destroy
         @post = Post.find(params[:id])
         @post.destroy
-        redirect_to about_path
+        redirect_to request.referer.present? ? request.referer : default_path
     end
     
     def upvote
