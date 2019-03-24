@@ -57,7 +57,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
-gem 'jquery-rails'
 gem 'cancancan', '~> 2.0'
 gem 'acts_as_votable', '~> 0.12.0'
 
