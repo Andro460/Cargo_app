@@ -63,5 +63,5 @@ gem 'acts_as_votable', '~> 0.12.0'
 
 group :production do
   gem 'pg'
-  gem 'rails_12factor'
+ 
 end
