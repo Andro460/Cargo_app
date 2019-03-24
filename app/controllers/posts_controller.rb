@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
     before_action :authenticate_user!, :only => [:new]
     load_and_authorize_resource
-    respond_to :js, :json, :html
+  
 
     def my_posts
         if user_signed_in?
@@ -51,7 +51,7 @@ class PostsController < ApplicationController
     def destroy
         @post = Post.find(params[:id])
         @post.destroy
-        redirect_to request.referer.present? ? request.referer : default_path
+        redirect_to about_path
     end
     
     def upvote
