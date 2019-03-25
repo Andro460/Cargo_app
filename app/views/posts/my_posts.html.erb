@@ -3,7 +3,7 @@
 <% @post.each do |post|%>
     <%= post.author%> <br/>
     <%= post.title%><br/>
-    <%= post.post%><br/>
+    <%= truncate(post.post, length: 400 )%><br/>
 <br/>
     <p class = 'btn btn-primary btn-sm'>     
         like <%=post.get_upvotes.size%>&nbsp;
