@@ -21,7 +21,8 @@
         </p><br/>
 <%end%>
 <br/>
-
+<%# <%= link_to "Back", request.referer.present? ? request.referer : default_path %> 
+<%= link_to "Back", :back %> &nbsp;
 
 <% if can? :update, @post %>
     <%= link_to 'Edit post', edit_post_path(@post)%> &nbsp;
