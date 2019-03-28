@@ -57,8 +57,7 @@ class PostsController < ApplicationController
     def upvote
         @post = Post.find(params[:id])
         @post.upvote_from current_user    
-        redirect_to @post
-       
+        redirect_to @post        
     end
 
     def downvote
