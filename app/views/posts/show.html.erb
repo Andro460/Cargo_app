@@ -22,7 +22,10 @@
 <%end%>
 <br/>
 <%# <%= link_to "Back", request.referer.present? ? request.referer : default_path %> 
-<%= link_to "Back", :back %> &nbsp;
+<%= link_to "All Posts", root_path %> &nbsp;
+<% if user_signed_in?%>
+    <%= link_to "My posts", my_posts_path %> &nbsp;
+<%end%>
 
 <% if can? :update, @post %>
     <%= link_to 'Edit post', edit_post_path(@post)%> &nbsp;
@@ -34,7 +37,7 @@
 
 <h2>Add comment </h2> 
             
-        <%= form_for([@post, @post.comments.build]) do |f| %>
+        <%= form_for([@post, @post.comments.build], remote: true) do |f| %>
 
         <p>
         <%= f.label :comment %><br/> 
@@ -59,7 +62,7 @@
             </div>
     
     <% if can? :destroy, com %>
-        <%= link_to 'Delete Comment', post_comment_path(@post, com), method: :delete, data: { confirm: 'Are you sure?'} %> 
+        <%= link_to 'Delete Comment', post_comment_path(@post, com), method: :delete, data: { confirm: 'Are you sure?', remote: true} %> 
     <%end%>    
         <hr>
     <%end%>
