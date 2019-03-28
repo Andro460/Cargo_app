@@ -37,7 +37,7 @@
 
 <h2>Add comment </h2> 
             
-        <%= form_for([@post, @post.comments.build], remote: true) do |f| %>
+        <%= form_for([@post, @post.comments.build]) do |f| %>
 
         <p>
         <%= f.label :comment %><br/> 
