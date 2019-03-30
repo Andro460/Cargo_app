@@ -7,9 +7,9 @@
 <i>Author:</i> <%= post.author%> <br/>
 <i>Title:</i>  <%= post.title%>  <br/>
              <%= truncate(post.post, length: 400 )%> <br/> 
-    <p class="text-muted">
-        <i><%= post.created_at%></i> <br/>
-    </p>
+             <p class="text-muted">
+                <i><%= post.created_at%></i> <br/>
+             </p>
 <br/>
         <p class = 'btn btn-primary btn-sm' style="pointer-events: none" type="button" disabled >     
           Like <%=post.get_upvotes.size%>&nbsp;
@@ -18,14 +18,13 @@
           Dislike <%=post.get_downvotes.size%>
         </p>
       
-    <p> 
-        
+        <p> 
             <%= link_to 'Show post', post_path(post), :target => "_blank"%> &nbsp;
           <% if can? :update, post %>
             <%= link_to 'Edit post', edit_post_path(post)%> &nbsp;
             <%= link_to 'Delete post', post_path(post), method: :delete, data: { confirm: 'Are you sure?'} %> 
           <%end%>  
-    </p>
+       </p>
 
         <hr>
     <%end%>

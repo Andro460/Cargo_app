@@ -5,10 +5,10 @@
     <%= post.title%><br/>
     <%= truncate(post.post, length: 400 )%><br/>
 <br/>
-    <p class = 'btn btn-primary btn-sm'>     
+    <p class = 'btn btn-primary btn-sm' style="pointer-events: none" type="button" disabled >     
         like <%=post.get_upvotes.size%>&nbsp;
     </p>  &nbsp;
-    <p class = 'btn btn-secondary btn-sm'> 
+    <p class = 'btn btn-secondary btn-sm' style="pointer-events: none" type="button" disabled > 
         dislike <%=post.get_downvotes.size%>
     </p>
 <br/>
