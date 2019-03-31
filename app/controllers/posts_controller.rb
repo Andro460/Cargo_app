@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
     def my_posts
         if user_signed_in?
-            @post = Post.where  author: current_user.username
+            @post = current_user.posts
         else
             redirect_to action: :index
         end
