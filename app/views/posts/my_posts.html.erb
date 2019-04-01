@@ -1,20 +1,11 @@
 <h2>Мои посты</h2>
-
 <% @post.each do |post|%>
-    <%= post.author%> <br/>
-    <%= post.title%><br/>
-    <%= truncate(post.post, length: 400 )%><br/>
-<br/>
-    <p class = 'btn btn-primary btn-sm' style="pointer-events: none">     
-        like <%=post.get_upvotes.size%>&nbsp;
-    </p>  &nbsp;
-    <p class = 'btn btn-secondary btn-sm' style="pointer-events: none"> 
-        dislike <%=post.get_downvotes.size%>
-    </p>
+    <%= render partial: "post", locals: {post: post}%>
 <br/>
     <%= link_to 'Show post', post_path(post)%> &nbsp;
     <%= link_to 'Edit post', edit_post_path(post)%> &nbsp;
-    <%= link_to 'Delete post', post_path(post), method: :delete, data: { confirm: 'Are you sure?'} %> 
-
-    <hr>
+    <%= link_to 'Delete post', post_path(post), method: :delete, data: { confirm: 'Are you sure?', remote: true} %> 
+<hr>
 <%end%>
+
+

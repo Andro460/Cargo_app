@@ -4,25 +4,14 @@
     <h2>Список объявлений</h2>
     <br/>
     <% @post.each do |post|%>
-<i>Author:</i> <%= post.author%> <br/>
-<i>Title:</i>  <%= post.title%>  <br/>
-             <%= truncate(post.post, length: 400 )%> <br/> 
-             <p class="text-muted">
-                <i><%= post.created_at%></i> <br/>
-             </p>
-<br/>
-        <p class = 'btn btn-primary btn-sm' style="pointer-events: none">     
-          Like <%=post.get_upvotes.size%>&nbsp;
-        </p>  &nbsp;
-        <p class = 'btn btn-secondary btn-sm' style="pointer-events: none"> 
-          Dislike <%=post.get_downvotes.size%>
-        </p>
+        
+        <%= render partial: "post", locals: {post: post}%>
       
         <p> 
             <%= link_to 'Show post', post_path(post), :target => "_blank"%> &nbsp;
           <% if can? :update, post %>
             <%= link_to 'Edit post', edit_post_path(post)%> &nbsp;
-            <%= link_to 'Delete post', post_path(post), method: :delete, data: { confirm: 'Are you sure?'} %> 
+            <%= link_to 'Delete post', post_path(post), method: :delete, data: { confirm: 'Are you sure?', remote: true} %> 
           <%end%>  
        </p>
 

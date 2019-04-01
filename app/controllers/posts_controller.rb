@@ -7,7 +7,7 @@ class PostsController < ApplicationController
         if user_signed_in?
             @post = current_user.posts
         else
-            redirect_to action: :index
+            redirect_to root_path
         end
     end 
     

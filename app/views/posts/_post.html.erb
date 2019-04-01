@@ -1,0 +1,14 @@
+
+    <i>Author:</i> <%= post.author%> <br/>
+    <i>Title:</i>  <%= post.title%><br/>
+    <%= truncate(post.post, length: 400 )%><br/>
+    <p class="text-muted">
+         <i><%= post.created_at%></i> <br/>
+    </p>
+<br/>
+    <p class = 'btn btn-primary btn-sm' style="pointer-events: none">     
+        like <%=post.get_upvotes.size%>&nbsp;
+    </p>  &nbsp;
+    <p class = 'btn btn-secondary btn-sm' style="pointer-events: none"> 
+        dislike <%=post.get_downvotes.size%>
+    </p>
