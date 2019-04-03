@@ -32,6 +32,8 @@ class PostsController < ApplicationController
         else
             render action: 'new'
         end
+        post=@post
+        DeletePostJob.set(wait: 2.weeks).perform_later post
     end  
 
     def edit 
