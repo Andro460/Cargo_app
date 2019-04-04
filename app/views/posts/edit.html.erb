@@ -2,25 +2,25 @@
 
 <%= form_for :post, url: post_path(@post), method: :put do |f| %>
 
-     <% if @post %>
-         <p>
-            <ul>
-               <% @post.errors.full_messages.each do |msg| %>
-                  <li> <%= msg %> </li>
-                <%end%>  
-            </ul>
-         </p>
-      <%end%>    
+   <% if @post %>
+      <p>
+         <ul>
+            <% @post.errors.full_messages.each do |msg| %>
+               <li> <%= msg %> </li>
+               <%end%>  
+         </ul>
+      </p>
+   <%end%>    
        
    <div class="col-md-8">   
       <p>   
          <%= f.label :Заголовок %><br/> 
-         <%= f.text_field :title %>
+         <%= f.text_field :title, class: "form-control" %>
       </p>    
          
       <p>
          <%= f.label :Ваше_Объявление  %><br/> 
-         <%= f.text_area :post, class: "form-control"%>
+         <%= f.text_area :post, class: "form-control" %>
       </p>
 
       <p>
@@ -28,6 +28,6 @@
          <%= f.check_box :comments_permit %>
       </p>    
          
-        <%= f.submit 'Редактировать', class:"btn btn-secondary" %> 
+        <%= f.submit 'Редактировать', class: "btn btn-secondary" %> 
    </div>
 <%end%>  

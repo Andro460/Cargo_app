@@ -5,35 +5,35 @@ class PostsController < ApplicationController
 
     def my_posts
         if user_signed_in?
-            @post = current_user.posts
+            @post = current_user.posts.order('created_at DESC')
         else
             redirect_to root_path
         end
     end 
     
     def index
-        @post = Post.order('created_at DESC')
+      @post = Post.order('created_at DESC')
     end 
     
     def new
     end   
     
     def show
-    @post = Post.find(params[:id])
+        @post = Post.find(params[:id])
     end
     
     def create
-       @user=current_user
+        @user=current_user
         @post = @user.posts.build(post_params)
         @post.author = @user.username
         if @post.save
             flash[:notice] = 'Объявление добавлено!'
             redirect_to @post
+            post=@post
+            DeletePostJob.set(wait: 3.weeks).perform_later post
         else
             render action: 'new'
-        end
-        post=@post
-        DeletePostJob.set(wait: 3.weeks).perform_later post
+        end 
     end  
 
     def edit 
@@ -69,11 +69,8 @@ class PostsController < ApplicationController
     end
 
 
-
     private
     def post_params
         params.require(:post).permit(:author, :title, :post, :comments_permit)
-    end    
-    
-    
+    end     
 end

@@ -18,11 +18,11 @@
 <div class="col-md-8">
       <p>   
          <%= f.label :Заголовок %><br/> 
-         <%= f.text_field :title, placeholder: 'Заголовок' %>
+         <%= f.text_field :title, placeholder: 'Заголовок', class: "form-control" %>
       </p>    
          
       <p>
-         <%= f.label :Ваше_Объявление  %><br/> 
+         <%= f.label :Ваше_Объявление %><br/> 
          <%= f.text_area :post, placeholder: 'Введите объявление', class: "form-control" %>
       </p>
 
@@ -31,7 +31,7 @@
          <%= f.check_box :comments_permit %>
       </p>    
          
-        <%= f.submit 'Отправить', class:"btn btn-secondary"   %> 
+        <%= f.submit 'Разместить', class:"btn btn-secondary" %> 
 </div>      
  <% end %>
 </div>

@@ -37,12 +37,12 @@
 
 <h2>Add comment </h2> 
             
-        <%= form_for([@post, @post.comments.build]) do |f| %>
+    <%= form_for([@post, @post.comments.build]) do |f| %>
 
-        <p>
+    <p>
         <%= f.label :comment %><br/> 
-        <%= f.text_area :content, class:'col-md-5'  %>
-        </p>
+        <%= f.text_area :content, class:'col-md-5'%>
+    </p>
     
     <% if user_signed_in? %>
         <%= f.submit 'Create Comment!' %><br/>
