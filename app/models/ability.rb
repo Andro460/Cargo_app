@@ -5,26 +5,26 @@ class Ability
     user ||= User.new
    
     if user.admin?
-           can :manage, :all
-         else
-           can :my_posts, Post
-           can :read, :all
-           can :create, :all
-           
-          can :upvote, Post
-          can :downvote, Post
+        can :manage, :all
+      else
+        can :my_posts, Post
+        can :read, :all
+        can :create, :all
+        
+      can :upvote, Post
+      can :downvote, Post
 
-          can :update, Post do |post|
-            post.user == user
-          end
+      can :update, Post do |post|
+        post.user == user
+      end
 
-          can :destroy, Post do |post|
-            post.user == user
-          end
+      can :destroy, Post do |post|
+        post.user == user
+      end
 
-          can :destroy, Comment do |comment|
-            comment.user == user
-          end
+      can :destroy, Comment do |comment|
+        comment.user == user
+      end
     end 
 
 
