@@ -28,17 +28,17 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item ">
-        <a class="nav-link" href= "/posts/new" >Подать объявление <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href= "/posts/new" ><%= t('navigation.place post')%><span class="sr-only">(current)</span></a>
       </li>
       
       <% if user_signed_in? %>
         <li class="nav-item ">
-          <a class="nav-link" href="/my_posts">Мои объявления</a>
+          <a class="nav-link" href="/my_posts"><%= t('navigation.my posts')%></a>
         </li>
       <% end %>
 
       <li class="nav-item ">
-        <a class="nav-link" href="/about">О нас</a>                                                    
+        <a class="nav-link" href="/about"><%= t('navigation.about')%></a>                                                    
       </li>      
     </ul>
 

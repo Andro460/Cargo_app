@@ -1,4 +1,4 @@
-<h2>Мои посты</h2>
+<h2><%= t('posts.my_posts.title')%></h2>
 <% @post.each do |post|%>
     <%= render partial: "post", locals: {post: post}%>
 <br/>

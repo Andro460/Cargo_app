@@ -31,3 +31,16 @@
 
 en:
   hello: "Hello world"
+  navigation:
+    place post: "Place your post"
+    about: "About us"
+    my posts: "My posts"
+  posts:
+    index:
+      title: "All posts here"
+    my_posts:
+      title: "My posts"
+    new:
+      title: "Create new post"
+    edit:
+      title: "Edit post"
