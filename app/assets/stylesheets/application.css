@@ -22,3 +22,9 @@
     border: 2px solid red;
  }
 
+ .area_height {
+   min-height: 250px;
+}
+
+
+
