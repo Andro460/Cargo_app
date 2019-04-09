@@ -14,20 +14,20 @@
        
    <div class="col-md-8">   
       <p>   
-         <%= f.label :Заголовок %><br/> 
+         <%= f.label :Title %><br/> 
          <%= f.text_field :title, class: "form-control" %>
       </p>    
          
       <p>
-         <%= f.label :Ваше_Объявление  %><br/> 
+         <%= f.label :Your_post  %><br/> 
          <%= f.text_area :post, class: "form-control" %>
       </p>
 
       <p>
-         <%= f.label :Запретить_комментарии %><br/> 
+         <%= f.label :Disable_comments%><br/> 
          <%= f.check_box :comments_permit %>
       </p>    
          
-        <%= f.submit 'Редактировать', class: "btn btn-secondary" %> 
+        <%= f.submit 'Edit_post', class: "btn btn-secondary" %> 
    </div>
 <%end%>  

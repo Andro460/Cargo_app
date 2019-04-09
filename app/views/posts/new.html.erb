@@ -17,21 +17,21 @@
  
 <div class="col-md-8">
       <p>   
-         <%= f.label :Заголовок %><br/> 
-         <%= f.text_field :title, placeholder: 'Заголовок', class: "form-control" %>
+         <%= f.label :Title %><br/> 
+         <%= f.text_field :title, placeholder: 'Title', class: "form-control" %>
       </p>    
          
       <p>
-         <%= f.label :Ваше_Объявление %><br/> 
-         <%= f.text_area :post, placeholder: 'Введите объявление', class: "form-control" %>
+         <%= f.label :Your_post %><br/> 
+         <%= f.text_area :post, placeholder: 'Add your post here', class: "form-control" %>
       </p>
 
       <p>
-         <%= f.label :Запретить_комментарии %><br/> 
+         <%= f.label :Disable_comments %><br/> 
          <%= f.check_box :comments_permit %>
       </p>    
          
-        <%= f.submit 'Разместить', class:"btn btn-secondary" %> 
+        <%= f.submit 'Add post', class:"btn btn-secondary" %> 
 </div>      
  <% end %>
 </div>
